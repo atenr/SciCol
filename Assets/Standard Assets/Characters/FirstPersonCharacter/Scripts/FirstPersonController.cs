@@ -41,6 +41,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
+//		public GameObject bulletPrefab;
+//		public Transform bulletSpawn;
 
         // Use this for initialization
         private void Start()
@@ -80,10 +82,23 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_MoveDir.y = 0f;
             }
 
+/*			if (m_Input.GetKeyDown(KeyCode.One)){
+				Fire ();
+			}
+*/
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
         }
 
+/*		void Fire(){
+			var bullet = (GameObject)Instantiate (
+				             bulletPrefab,
+				             bulletSpawn.position,
+				             bulletSpawn.rotation);
+			bullet.GetCompnent<Rigidbody> ().velocity = bullet.transform.forward * 6;
 
+			Destroy(bullet, 3.0f);
+		}
+*/
         private void PlayLandingSound()
         {
             m_AudioSource.clip = m_LandSound;
@@ -175,7 +190,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_FootstepSounds[n] = m_FootstepSounds[0];
             m_FootstepSounds[0] = m_AudioSource.clip;
         }
-
+			
 
         private void UpdateCameraPosition(float speed)
         {
